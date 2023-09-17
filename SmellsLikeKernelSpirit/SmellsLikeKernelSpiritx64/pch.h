@@ -28,13 +28,13 @@ Copyright (c) Fluxuss Software Security, LLC
 
 #define PROCESS_INFO_CLASS_INSTRUMENTATION 40
 
-typedef NTSTATUS ( NTAPI* pNtSetInformationProcess ) (
+using tpdNtSetInformationProcess = NTSTATUS ( NTAPI* ) (
 
-    HANDLE ProcessHandle,
-    PROCESS_INFORMATION_CLASS ProcessInformationClass,
-    PVOID ProcessInformation,
-    ULONG ProcessInformationLength
- 
+    _In_ HANDLE ProcessHandle,
+    _In_ PROCESS_INFORMATION_CLASS ProcessInformationClass,
+    _In_ PVOID ProcessInformation,
+    _In_ ULONG ProcessInformationLength
+
 );
 
 typedef struct _PROCESS_INSTRUMENTATION_CALLBACK_INFORMATION {

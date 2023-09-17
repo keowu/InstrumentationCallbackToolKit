@@ -23,7 +23,7 @@ extern "C" VOID StuffProc(
 
 );
 
-auto NtSetInformationProcess = reinterpret_cast<pNtSetInformationProcess>( 
+auto NtSetInformationProcess = reinterpret_cast<tpdNtSetInformationProcess>( 
     
     ::GetProcAddress( 
  
