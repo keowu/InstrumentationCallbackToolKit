@@ -2,9 +2,8 @@
  
  <p> A fast method to intercept syscalls from any user-mode process using InstrumentationCallback and detect any process using InstrumentationCallback. </p>
 
-<p align="center">
-  [<img src="https://img.youtube.com/vi/LHb-fx-fKCA/hqdefault.jpg" width="600" height="300"/>](https://www.youtube.com/embed/LHb-fx-fKCA)
-</p>
+
+[<img src="https://img.youtube.com/vi/LHb-fx-fKCA/hqdefault.jpg" width="600" height="300"/>](https://www.youtube.com/embed/LHb-fx-fKCA)
 
 ##### The project is divided into two parts:
 
