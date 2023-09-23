@@ -11,6 +11,8 @@ Copyright (c) Fluxuss Software Security, LLC
 */
 #include "Defs.hh"
 
+extern "C" ULONG_PTR CheckProcessContainerInstrumentation( _In_ ULONG_PTR pPEPROCESS );
+
 namespace NirvanaHeuristics {
 
 	auto DetectNirvanedProcess(

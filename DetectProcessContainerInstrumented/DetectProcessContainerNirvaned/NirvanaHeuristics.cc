@@ -68,10 +68,6 @@ auto NirvanaHeuristics::DetectNirvanedProcess(
 
             KAPC_STATE kApcState;
 
-            auto ppeProcess = reinterpret_cast< ULONG_PTR >( peProcess );
-
-            ppeProcess += 0x3d8;
-
             ::KeStackAttachProcess(
                 
                 _Inout_ peProcess,
@@ -79,13 +75,19 @@ auto NirvanaHeuristics::DetectNirvanedProcess(
             
             );
 
-            auto phyAddress = ::MmGetPhysicalAddress(
+            auto pInstumentationAddress = CheckProcessContainerInstrumentation(
                 
-                _In_ *reinterpret_cast< PVOID* >( ppeProcess )
+                _In_ reinterpret_cast< ULONG_PTR >( peProcess )
             
             );
 
-            if ( *reinterpret_cast< ULONG_PTR* >( ppeProcess ) )
+            auto phyAddress = ::MmGetPhysicalAddress(
+
+                _In_ reinterpret_cast< PVOID >( pInstumentationAddress )
+            
+            );
+
+            if ( pInstumentationAddress )
 
                 ::DbgPrintEx(
 
@@ -93,7 +95,7 @@ auto NirvanaHeuristics::DetectNirvanedProcess(
                     _In_ 0,
                     _In_ "Detected a Nirvaned Process: %ls\nVirtual Address: %p\nPhysical Address: %p",
                     _In_ i->ProcessName.Buffer,
-                    _In_ *reinterpret_cast< ULONG_PTR* >( ppeProcess ),
+                    _In_ pInstumentationAddress,
                     _In_ phyAddress.QuadPart
 
                 );
